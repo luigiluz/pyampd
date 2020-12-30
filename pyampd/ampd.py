@@ -49,7 +49,7 @@ def find_peaks_original(x, scale=None, debug=False):
     l_scale = np.argmax(G)
 
     # find peaks that persist on all scales up to l
-    pks_logical = np.min(LSM[0:l_scale, :], axis=0)
+    pks_logical = np.min(LSM[0:l_scale + 1, :], axis=0)
     pks = np.flatnonzero(pks_logical)
     if debug:
         return pks, LSM, l_scale
@@ -103,7 +103,7 @@ def find_peaks(x, scale=None, debug=False):
     l_scale = np.argmax(G)
 
     # find peaks that persist on all scales up to l
-    pks_logical = np.min(LSM[0:l_scale, :], axis=0)
+    pks_logical = np.min(LSM[0:l_scale + 1, :], axis=0)
     pks = np.flatnonzero(pks_logical)
     if debug:
         return pks, LSM, G, l_scale
